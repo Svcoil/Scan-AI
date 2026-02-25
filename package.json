@@ -1,0 +1,21 @@
+{
+  "name": "scan-fit-ia",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "build:web": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"New-Item -ItemType Directory -Force .\\www | Out-Null; Copy-Item -Path .\\index.html -Destination .\\www\\index.html -Force; Copy-Item -Path .\\app.js -Destination .\\www\\app.js -Force; New-Item -ItemType Directory -Force .\\www\\estilos | Out-Null; Copy-Item -Path .\\estilos\\style.css -Destination .\\www\\estilos\\style.css -Force\"",
+    "android:sync": "npm run build:web && npx cap sync android",
+    "android:open": "npx cap open android",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@capacitor/android": "^8.1.0",
+    "@capacitor/cli": "^8.1.0",
+    "@capacitor/core": "^8.1.0"
+  }
+}

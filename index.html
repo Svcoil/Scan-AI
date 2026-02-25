@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FitScan AI</title>
+  <link rel="stylesheet" href="estilos/style.css" />
+</head>
+<body>
+
+  <!-- ONBOARDING -->
+  <section id="onboarding" class="screen">
+    <div class="content center">
+      <h1 id="onboardingTitle">Bem-vindo ao Scan Fit IA</h1>
+      <p id="onboardingText">Registre seu peso em segundos com câmera e OCR.</p>
+      <div class="onboarding-dots" aria-hidden="true">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+    <div class="actions">
+      <button id="onboardingSkipBtn" class="secondary-btn">Pular</button>
+      <button id="onboardingNextBtn" class="primary-btn">Próximo</button>
+    </div>
+  </section>
+
+  <!-- TELA HOME -->
+  <section id="home" class="screen active">
+    <div class="content center">
+      <h1>FitScan AI</h1>
+      <p>Escaneie o peso automaticamente</p>
+    </div>
+    <button class="primary-btn">Escanear Peso</button>
+  </section>
+
+  <!-- TELA CÂMERA -->
+ <section id="camera" class="screen">
+  <div class="camera-view">
+    <video id="video" autoplay></video>
+      <div class="scan-box"></div>
+    <p class="hint">Centralize o número do peso</p>
+  </div>
+  <button class="capture-btn" aria-label="Capturar foto" title="Capturar foto">Capturar</button>
+</section>
+
+<canvas id="canvas" class="hidden-canvas"></canvas>
+
+
+  <!-- TELA RESULTADO -->
+  <section id="result" class="screen">
+    <div class="content center">
+       
+        <img id="photoPreview" class="photo-preview" alt="Pré-visualização da foto capturada" />
+      <p id="ocrStatus" class="hint">Lendo peso...</p>
+
+      <p class="label">Peso identificado</p>
+      <h2 class="weight">20 kg</h2>
+      <input type="number" class="weight-input" placeholder="Corrigir peso" />
+      <div class="goal-block">
+        <p class="label">Meta de peso (kg)</p>
+        <div class="goal-row">
+          <input type="number" id="goalInput" class="goal-input" placeholder="Ex: 75" />
+          <button id="saveGoalBtn" class="secondary-btn goal-btn">Salvar meta</button>
+        </div>
+        <p id="goalStatus" class="goal-status">Defina uma meta para acompanhar seu progresso.</p>
+        <div class="progress-track" aria-label="Progresso da meta">
+          <div id="goalProgressBar" class="progress-bar"></div>
+        </div>
+        <p id="goalProgressText" class="goal-progress-text">Sem progresso calculado ainda.</p>
+      </div>
+      <div class="history-block" aria-live="polite">
+        <p class="label">Últimos pesos</p>
+        <ul id="weightHistory" class="weight-history"></ul>
+      </div>
+      <button id="proInsightsBtn" class="secondary-btn pro-btn">Análise avançada (Pro)</button>
+    </div>
+    <div class="actions">
+      <button class="secondary-btn">Corrigir</button>
+      <button class="primary-btn">Confirmar</button>
+    </div>
+  </section>
+
+  <!-- PAYWALL -->
+  <section id="paywall" class="screen">
+    <div class="content center">
+      <h1>Scan Fit Pro</h1>
+      <p>Desbloqueie análise avançada, histórico maior e insights personalizados.</p>
+      <div class="plans">
+        <div class="plan-card">
+          <p class="label">Plano Mensal</p>
+          <h2>R$ 19,90</h2>
+        </div>
+        <div class="plan-card highlight">
+          <p class="label">Plano Anual</p>
+          <h2>R$ 149,90</h2>
+          <p class="label">Economize 37%</p>
+        </div>
+      </div>
+      <p id="paywallStatus" class="goal-status">Assinatura simulada para validação do produto.</p>
+    </div>
+    <div class="actions">
+      <button id="continueFreeBtn" class="secondary-btn">Continuar grátis</button>
+      <button id="activateProBtn" class="primary-btn">Ativar Pro (mock)</button>
+    </div>
+  </section>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script src="app.js"></script>
+<div id="loading" class="loading hidden">
+  <div class="spinner"></div>
+  <p>Analisando peso...</p>
+</div>
+</body>
+</html>
